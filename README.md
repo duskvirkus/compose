@@ -28,21 +28,19 @@ Recommended python version is 3.7. Ubuntu based Linux is currently the only supp
 
 *If you use Anaconda*
 ```bash
-conda create -n pg python=3.7
-conda activate pg
+conda create -n compose python=3.7
+conda activate compose
+conda install -c conda-forge jupyterlab
+conda install -c anaconda ipykernel
+python -m ipykernel install --user --name=compose
 ```
-*If python is installed natively you may need to run*
-```bash
-alias python=python3
-alias pip=pip3
-```
-
 ### Dependancies
 
 ```bash
-./scripts/install/platform/ubuntu.sh
+sudo ./scripts/install/platform/ubuntu.sh
+sudo apt upgrade
 git submodule update --init --recursive
-python pytorch.py # to make sure you get the correct nvidia compile
+python scripts/install/pytorch.py # to make sure you get the correct nvidia compile
 pip install -r requirements.txt
 cd diffvg
 python setup.py install
@@ -55,5 +53,3 @@ python setup.py install
 This project would not be possible without the work of the creators of diffvg Tzu-Mao Li, Michal Lukáč, Michaël Gharbi, and Jonathan Ragan-Kelley.
 
 Thanks to Peter Schaldenbrand, Zhixuan Liu, Jean Oh (creators of StyleCLIPDraw) for example of getting diffvg working on colab.
-
-openFrameworks for borrowed setup script examples

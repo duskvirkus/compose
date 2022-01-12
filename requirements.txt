@@ -5,3 +5,4 @@ numba
 torch-tools
 visdom
 click
+opencv-python

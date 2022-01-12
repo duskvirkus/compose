@@ -9,4 +9,4 @@ if [ $EUID != 0 ]; then
     exit 1
 fi
 
-apt-get install build-essential ffmpeg 
+apt-get install build-essential ffmpeg nvidia-cuda-toolkit cmake
