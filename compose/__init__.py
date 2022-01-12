@@ -1,7 +1,8 @@
 from .in_out.load import load
 from .in_out.exporter import Exporter
 from .composition import Composition
-from .random import random_path, random_paths_composition
+from .random import random_curve, random_curve_composition
+from .renderer.default import DefaultRenderer
 
 __version__ = "0.0.1"
 

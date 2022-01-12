@@ -3,11 +3,11 @@ import random
 import torch
 
 from .composition import Composition
-from .elements.path import Path
+from .elements.curve import Curve
 
-def random_path(
-    comp
-) -> Path:
+def random_curve(
+    comp: Composition
+) -> Curve:
 
     num_segments = random.randint(3, 5)
     num_control_points = torch.zeros(num_segments, dtype = torch.int32) + 2
@@ -27,23 +27,31 @@ def random_path(
     points = torch.tensor(points)
     points[:, 0] *= comp.width
     points[:, 1] *= comp.height
-    return Path(
+
+    stroke_color = torch.tensor([
+        random.random(),
+        random.random(),
+        random.random(),
+        random.random(),
+    ])
+
+    return Curve(
         num_control_points = num_control_points,
         points = points,
+        stroke_color = stroke_color,
         stroke_width = torch.tensor(1.0),
-        is_closed = False
     )
 
-def random_paths_composition(
-    num_paths: int,
+def random_curve_composition(
+    num_curves: int,
     width: int = 100,
     height: int = 100,
 ) -> Composition:
 
     comp = Composition(width, height)
 
-    for i in range(num_paths):
-        comp.add_path(random_path(comp))
+    for i in range(num_curves):
+        comp.add_path(random_curve(comp))
 
     return comp
 

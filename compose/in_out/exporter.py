@@ -1,6 +1,11 @@
 import os
 import re
 
+import cv2
+import numpy as np
+
+from compose.image import Image
+
 class Exporter:
 
     def __init__(
@@ -32,3 +37,16 @@ class Exporter:
         self.run_directory = os.path.join(self.export_root, run_name)
 
         os.makedirs(self.run_directory)
+
+    def save(
+        self,
+        to_export: Image,
+        name: str = 'export',
+    ) -> None:
+        if self.run_directory is None:
+            self.create_run_directory()
+
+        image = to_export.data.numpy()
+        image *= 255
+        image = image.astype(np.uint8)
+        cv2.imwrite(os.path.join(self.run_directory, name + '.png'), image, [cv2.IMWRITE_PNG_COMPRESSION, 0])

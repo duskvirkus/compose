@@ -6,6 +6,8 @@ from typing import Union, List
 import torch
 import cv2
 
+from ..image import Image
+
 def check_image_extension(p: str) -> bool:
     ext = p.split('.')[-1]
     return ext == 'png' or ext == 'jpg' or ext == 'jpeg'    
@@ -39,11 +41,11 @@ def get_image_paths(input_paths: List[str]) -> List[str]:
 
 def load(
     to_load: Union[str, List[str]]
-) -> Union[torch.Tensor, List[torch.Tensor]]:
+) -> Union[Image, List[Image]]:
 
     image_paths = get_image_paths(pre_process_paths(to_load))
 
-    images = [torch.from_numpy(cv2.imread(path)).to(torch.float32) / 255.0 for path in image_paths]
+    images = [Image(torch.from_numpy(cv2.imread(path)).to(torch.float32) / 255.0) for path in image_paths]
 
     if len(images) < 1:
         raise Exception(f'ERROR: Unable to load any images! {to_load}')
