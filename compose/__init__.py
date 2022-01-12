@@ -1,5 +1,7 @@
-from .in_out.loader import Loader
+from .in_out.load import load
 from .in_out.exporter import Exporter
+from .composition import Composition
+from .random import random_path, random_paths_composition
 
 __version__ = "0.0.1"
 
@@ -16,8 +18,6 @@ else:
 if mode == 'normal':
     import os
 
-    global loader
     global exporter
 
-    loader = Loader()
     exporter = Exporter(os.path.join(os.getcwd(), 'exports'))

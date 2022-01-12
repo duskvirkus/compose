@@ -12,13 +12,12 @@ class Exporter:
         self.postfix = postfix
 
         self.run_directory = None
-        self.create_run_directory()
 
     def create_run_directory(self) -> None:
         os.makedirs(self.export_root, exist_ok=True)
 
         max_num = -1
-        for root, subdirs, files in os.walk(self.export_root):
+        for _, subdirs, _ in os.walk(self.export_root):
             for subdir in subdirs:
                 numbers = re.findall('[0-9]+', subdir)
                 if numbers:

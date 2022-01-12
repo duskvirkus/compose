@@ -6,3 +6,4 @@ torch-tools
 visdom
 click
 opencv-python
+scikit-image

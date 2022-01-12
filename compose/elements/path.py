@@ -12,4 +12,4 @@ class Path(pydiffvg.Path):
         id = '',
         use_distance_approx: bool = False
     ):
-      super().__init__(self, num_control_points, points, is_closed, stroke_width, id, use_distance_approx)
+      super().__init__(num_control_points, points, is_closed, stroke_width, id, use_distance_approx)

@@ -1,4 +1,4 @@
-from elements.path import Path
+from .elements.path import Path
 
 class Composition:
 
