@@ -1,6 +1,5 @@
 import pydiffvg
 import numpy as np
-import torch
 
 from .renderer import Renderer
 from ..composition import Composition
@@ -22,19 +21,15 @@ class DefaultRenderer(Renderer):
         comp: Composition
     ) -> Image:
 
-        background = None
-        if self.background_color is not None:
-            background = solid_image(comp.width, comp.height, self.background_color)
-
-        return self.render_backend(
+        return Image(self.render_backend(
             comp.width,
             comp.height,
             2,
             2,
             self.seed,
-            background,
+            None,
             *comp.scene_args()
-        )
+        ))
 
     def background(
         self,

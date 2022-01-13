@@ -7,3 +7,5 @@ visdom
 click
 opencv-python
 scikit-image
+lpips
+multipledispatch

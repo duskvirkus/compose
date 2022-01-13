@@ -17,6 +17,8 @@ class Composition:
 
         self.cache_scene_args = None
 
+        # optimizers
+
     def add_path(self, p: Path) -> None:
         self.elements.append(p)
         self.cache_scene_args = None
