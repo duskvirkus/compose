@@ -12,6 +12,14 @@ class Element(ABC):
     def get_shape_group(self):
         pass
 
+    @abstractmethod
+    def get_to_optimize(self, set_grad=True):
+        pass
+
+    @abstractmethod
+    def clamp_values(self) -> None:
+        pass
+
     @staticmethod
     def get_next_id() -> int:
         id = Element.element_counter

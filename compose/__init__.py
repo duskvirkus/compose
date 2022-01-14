@@ -21,14 +21,18 @@ if mode == 'normal':
     from .render.default import DefaultRenderer
     from .image import Image
     from .anazlyze import LPIPS
+    from .refine import Refinery
+    from .render.renderer import Renderer
 
     global exporter
     global renderer
     global lpips
+    global refinery
 
     exporter = Exporter(os.path.join(os.getcwd(), 'exports'))
     renderer = DefaultRenderer()
     lpips = LPIPS()
+    refinery = Refinery()
 
     pydiffvg.set_use_gpu(torch.cuda.is_available())
 
@@ -37,3 +41,19 @@ if mode == 'normal':
 
     def save(img: Image) -> None:
         exporter.save(img)
+
+    def refine(
+        comp: Composition,
+        img: Image,
+        renderer: Renderer = renderer,
+        analyzer = lpips,
+        exporter: Exporter = exporter,
+    ) -> None:
+        refinery(comp, img, renderer, analyzer, exporter)
+
+    def export_init(comp) -> None:
+        img = render(comp)
+        exporter.save(img, 'init')
+
+    def export_steps(every: int = 1) -> None:
+        refinery.set_export(export_every=every)

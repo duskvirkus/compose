@@ -18,6 +18,8 @@ class Exporter:
 
         self.run_directory = None
 
+        self.export_count = 0
+
     def create_run_directory(self) -> None:
         os.makedirs(self.export_root, exist_ok=True)
 
@@ -46,7 +48,8 @@ class Exporter:
         if self.run_directory is None:
             self.create_run_directory()
 
-        image = to_export.data.numpy()
+        image = to_export.data.detach().numpy()
         image *= 255
         image = image.astype(np.uint8)
-        cv2.imwrite(os.path.join(self.run_directory, name + '.png'), image, [cv2.IMWRITE_PNG_COMPRESSION, 0])
+        cv2.imwrite(os.path.join(self.run_directory, str(self.export_count).zfill(6) + '-' + name + '.png'), image, [cv2.IMWRITE_PNG_COMPRESSION, 0])
+        self.export_count += 1
