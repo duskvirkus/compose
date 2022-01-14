@@ -33,21 +33,7 @@ class Composition:
 
         return all_points, all_stroke_widths, all_colors
 
-        # for path in self.elements:
-        #     path.points.requires_grad = True
-        #     points_vars.append(path.points)
-        # for path in self.shapes:
-        #     path.stroke_width.requires_grad = True
-        #     stroke_width_vars.append(path.stroke_width)
-
-        # for group in shape_groups:
-        #     group.stroke_color.requires_grad = True
-        #     color_vars.append(group.stroke_color)
-
     def scene_args(self):
-        # print(self.elements[0].shape())
-        # print([element.shape() for element in self.elements])
-        # if self.cache_scene_args is None:
         self.cache_scene_args = pydiffvg.RenderFunction.serialize_scene(
             self.width,
             self.height,

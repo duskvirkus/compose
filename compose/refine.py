@@ -73,10 +73,13 @@ class Refinery:
             if self.export and self.steps_since_export >= self.export_every:
                 exporter.save(img)
                 self.steps_since_export = 0
-                print('export')
 
             print(loss.item())
 
             loss.backward()
+
+            self.points_optimizer.step()
+            self.width_optimizer.step()
+            self.color_optimizer.step()
 
             comp.clamp_values()

@@ -46,16 +46,6 @@ def load(
 
     image_paths = get_image_paths(pre_process_paths(to_load))
 
-    # images = []
-    # for path in image_paths:
-    #     img = cv2.imread(path)
-    #     if img.ndim == 3 and img.shape[-1] == 3:
-    #         a = np.full((img.shape[0], img.shape[1], 4), 255, np.uint8)
-    #         a[:, :, :3] = img
-    #         img = a
-    #     img = torch.from_numpy(img).to(torch.float32) / 255.0
-    #     images.append(Image(img))
-
     images = [Image(torch.from_numpy(cv2.imread(path)).to(torch.float32) / 255.0) for path in image_paths]
 
     if len(images) < 1:
