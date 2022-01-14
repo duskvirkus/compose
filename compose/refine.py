@@ -4,6 +4,7 @@ from .composition import Composition
 from .image import Image
 from .render.renderer import Renderer
 from .in_out.exporter import Exporter
+from .analyze.analyzer import Analyzer
 
 class Refinery:
 
@@ -27,7 +28,7 @@ class Refinery:
         comp: Composition,
         target: Image,
         renderer: Renderer,
-        analyzer,
+        analyzer: Analyzer,
         exporter: Exporter,
     ):
         self.step(comp, target, renderer, analyzer, exporter)
@@ -55,7 +56,7 @@ class Refinery:
         comp: Composition,
         target: Image,
         renderer: Renderer,
-        analyzer,
+        analyzer: Analyzer,
         exporter: Exporter,
     ) -> None:
         for i in range(self.step_size):

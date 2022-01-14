@@ -20,7 +20,8 @@ if mode == 'normal':
     from .random import random_curve, random_curve_composition
     from .render.default import DefaultRenderer
     from .image import Image
-    from .anazlyze import LPIPS
+    from .analyze.lpips import LPIPS
+    from .analyze.analyzer import Analyzer
     from .refine import Refinery
     from .render.renderer import Renderer
 
@@ -46,7 +47,7 @@ if mode == 'normal':
         comp: Composition,
         img: Image,
         renderer: Renderer = renderer,
-        analyzer = lpips,
+        analyzer: Analyzer = lpips,
         exporter: Exporter = exporter,
     ) -> None:
         refinery(comp, img, renderer, analyzer, exporter)
