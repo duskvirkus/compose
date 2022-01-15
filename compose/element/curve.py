@@ -50,8 +50,15 @@ class Curve(Element):
     def get_shape(self):
         return self.shape
 
+    def get_points(self) -> torch.Tensor:
+        return self.shape.points
+
     def get_shape_group(self):
         return self.shape_group
 
     def clamp_values(self) -> None:
         self.shape_group.stroke_color.data.clamp_(0.0, 1.0)
+
+    def __str__(self) -> str:
+        prefix = super().__str__()
+        return f'{prefix}: [\n\tpoints: {self.get_points()}\n]'
