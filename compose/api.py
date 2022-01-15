@@ -1,5 +1,5 @@
 # expose top level
-from compose.math import *
+from compose.chance.random import *
 from compose.element.create import *
 from compose.io import load
 from compose.composition import Composition

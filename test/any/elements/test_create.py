@@ -71,7 +71,7 @@ def test_create_line_torch():
     assert points[1, 1] == 78
 
 def test_create_curve_xy_int():
-    curve = create_curve_xy(1, 2, 3, 4, 5, 6, 7, 8)
+    curve = create_curve_xy(1, 2, 3, 4, 5, 6)
 
     assert type(curve) == Curve
 
@@ -82,11 +82,9 @@ def test_create_curve_xy_int():
     assert points[1, 1] == 4
     assert points[2, 0] == 5
     assert points[2, 1] == 6
-    assert points[3, 0] == 7
-    assert points[3, 1] == 8
 
 def test_create_curve_xy_float():
-    curve = create_curve_xy(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8)
+    curve = create_curve_xy(0.1, 0.2, 0.3, 0.4, 0.5, 0.6)
 
     assert type(curve) == Curve
 
@@ -97,11 +95,9 @@ def test_create_curve_xy_float():
     assert points[1, 1].item() == approx(.4)
     assert points[2, 0].item() == approx(.5)
     assert points[2, 1].item() == approx(.6)
-    assert points[3, 0].item() == approx(.7)
-    assert points[3, 1].item() == approx(.8)
 
 def test_create_curve_list_int():
-    curve = create_curve([1, 2], [3, 4], [5, 6], [7, 8])
+    curve = create_curve([1, 2], [3, 4], [5, 6])
 
     assert type(curve) == Curve
 
@@ -112,11 +108,9 @@ def test_create_curve_list_int():
     assert points[1, 1] == 4
     assert points[2, 0] == 5
     assert points[2, 1] == 6
-    assert points[3, 0] == 7
-    assert points[3, 1] == 8
 
 def test_create_curve_list_float():
-    curve = create_curve([0.1, 0.2], [0.3, 0.4], [0.5, 0.6], [0.7, 0.8])
+    curve = create_curve([0.1, 0.2], [0.3, 0.4], [0.5, 0.6])
 
     assert type(curve) == Curve
 
@@ -127,15 +121,12 @@ def test_create_curve_list_float():
     assert points[1, 1].item() == approx(.4)
     assert points[2, 0].item() == approx(.5)
     assert points[2, 1].item() == approx(.6)
-    assert points[3, 0].item() == approx(.7)
-    assert points[3, 1].item() == approx(.8)
 
 def test_create_curve_np():
     curve = create_curve(
-        np.array([1, 2]), 
-        np.array([3, 4]), 
-        np.array([5, 6]), 
-        np.array([7, 8]),
+        np.array([1, 2]),
+        np.array([3, 4]),
+        np.array([5, 6]),
     )
 
     assert type(curve) == Curve
@@ -147,15 +138,12 @@ def test_create_curve_np():
     assert points[1, 1] == 4
     assert points[2, 0] == 5
     assert points[2, 1] == 6
-    assert points[3, 0] == 7
-    assert points[3, 1] == 8
 
 def test_create_curve_torch():
     curve = create_curve(
         torch.tensor([1, 2]), 
         torch.tensor([3, 4]), 
         torch.tensor([5, 6]), 
-        torch.tensor([7, 8]),
     )
 
     assert type(curve) == Curve
@@ -167,8 +155,6 @@ def test_create_curve_torch():
     assert points[1, 1] == 4
     assert points[2, 0] == 5
     assert points[2, 1] == 6
-    assert points[3, 0] == 7
-    assert points[3, 1] == 8
 
 def test_create_continuous_curve_list_int():
     curve = create_continuous_curve(
@@ -176,11 +162,9 @@ def test_create_continuous_curve_list_int():
         [[
                 [13, 14], 
                 [15, 16], 
-                [17, 18],
             ],[
+                [17, 18],
                 [19, 20], 
-                [21, 22], 
-                [23, 24],
             ],
         ],
     )
@@ -198,10 +182,6 @@ def test_create_continuous_curve_list_int():
     assert points[3, 1] == 18
     assert points[4, 0] == 19
     assert points[4, 1] == 20
-    assert points[5, 0] == 21
-    assert points[5, 1] == 22
-    assert points[6, 0] == 23
-    assert points[6, 1] == 24
 
 def test_create_continuous_curve_list_float():
     curve = create_continuous_curve(
@@ -209,11 +189,9 @@ def test_create_continuous_curve_list_float():
         [[
                 [1.3, 1.4], 
                 [1.5, 1.6], 
-                [1.7, 1.8],
             ],[
+                [1.7, 1.8],
                 [1.9, 2.0], 
-                [2.1, 2.2], 
-                [2.3, 2.4],
             ],
         ],
     )
@@ -231,10 +209,6 @@ def test_create_continuous_curve_list_float():
     assert points[3, 1].item() == approx(1.8)
     assert points[4, 0].item() == approx(1.9)
     assert points[4, 1].item() == approx(2.0)
-    assert points[5, 0].item() == approx(2.1)
-    assert points[5, 1].item() == approx(2.2)
-    assert points[6, 0].item() == approx(2.3)
-    assert points[6, 1].item() == approx(2.4)
 
 def test_create_continuous_curve_np():
     curve = create_continuous_curve(
@@ -242,11 +216,9 @@ def test_create_continuous_curve_np():
         np.array([[
                 [13, 14], 
                 [15, 16], 
-                [17, 18],
             ],[
+                [17, 18],
                 [19, 20], 
-                [21, 22], 
-                [23, 24],
             ],
         ]),
     )
@@ -264,10 +236,6 @@ def test_create_continuous_curve_np():
     assert points[3, 1] == 18
     assert points[4, 0] == 19
     assert points[4, 1] == 20
-    assert points[5, 0] == 21
-    assert points[5, 1] == 22
-    assert points[6, 0] == 23
-    assert points[6, 1] == 24
 
 def test_create_continuous_curve_torch():
     curve = create_continuous_curve(
@@ -297,7 +265,3 @@ def test_create_continuous_curve_torch():
     assert points[3, 1] == 18
     assert points[4, 0] == 19
     assert points[4, 1] == 20
-    assert points[5, 0] == 21
-    assert points[5, 1] == 22
-    assert points[6, 0] == 23
-    assert points[6, 1] == 24

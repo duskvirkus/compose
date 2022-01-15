@@ -4,7 +4,7 @@ from typing import Union
 import torch
 import pydiffvg
 
-from .color import Color
+from compose.color import Color
 
 class Image:
 
