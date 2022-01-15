@@ -2,14 +2,18 @@ import random
 
 import torch
 
-from .composition import Composition
-from .elements.curve import Curve
+from compose.element import Curve
 
 def random_curve(
-    comp: Composition
+    x_max: float,
+    y_max: float,
+    x_min: float = 0.0,
+    y_min: float = 0.0,
+    segment_min: int = 3,
+    segment_max: int = 5,
 ) -> Curve:
 
-    num_segments = random.randint(3, 5)
+    num_segments = random.randint(segment_min, segment_max)
     num_control_points = torch.zeros(num_segments, dtype = torch.int32) + 2
     points = []
     p0 = (random.random(), random.random())
@@ -41,17 +45,4 @@ def random_curve(
         stroke_color = stroke_color,
         stroke_width = torch.tensor(1.0),
     )
-
-def random_curve_composition(
-    num_curves: int,
-    width: int = 100,
-    height: int = 100,
-) -> Composition:
-
-    comp = Composition(width, height)
-
-    for i in range(num_curves):
-        comp.add_path(random_curve(comp))
-
-    return comp
 

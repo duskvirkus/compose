@@ -1,6 +1,7 @@
 from typing import Union, List
 
 import numpy as np
+import torch
 
 class Color:
 
@@ -19,3 +20,6 @@ class Color:
             self.data = np.array([self.data[0] / max, self.data[1] / max, self.data[2] / max, 1.0])
         if self.data.shape[0] == 4:
             self.data /= max
+
+    def as_tensor(self) -> torch.Tensor:
+        return torch.from_numpy(self.data)
