@@ -4,7 +4,6 @@ import torch
 import pydiffvg
 
 from compose.element.element import Element
-from compose.element.trait import Trait
 
 class Curve(Element):
 
@@ -46,15 +45,6 @@ class Curve(Element):
     
     def get_stroke_colors(self) -> List[torch.Tensor]:
         return [self.shape_group.stroke_color]
-
-    def get_traits(self) -> List[Trait]:
-        traits = []
-
-        traits.append(Trait([self.shape.points], 'points'))
-        traits.append(Trait([self.shape.stroke_width], 'stroke_weight'))
-        traits.append(Trait([self.shape_group.stroke_color], 'stroke_color'))
-
-        return traits
 
     def get_shape(self):
         return self.shape

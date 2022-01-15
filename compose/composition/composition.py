@@ -81,6 +81,7 @@ class Composition:
 
             for optim in self._optimizers:
                 optim.step()
+                print('aaa')
 
             self.clamp_values()
 
