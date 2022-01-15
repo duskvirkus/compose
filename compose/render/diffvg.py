@@ -24,6 +24,6 @@ class DiffVGRenderer(Renderer):
             2,
             self.seed,
             None,
-            *comp.scene_args()
+            *comp.get_scene_args()
         ))
         

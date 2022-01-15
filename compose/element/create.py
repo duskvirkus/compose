@@ -81,8 +81,10 @@ def create_continuous_curve(
 
     if type(curve_data) != torch.Tensor:
         curve_data = torch.tensor(curve_data, dtype=torch.float32)
+
+    assert curve_data.ndim == 3
     
-    num_control_points = torch.zeros(curve_data.shape[0], dtype = torch.int32) + curve_data.shape[1]
+    num_control_points = torch.zeros(curve_data.shape[0], dtype = torch.int32) + curve_data.shape[1] - 1
 
     curve_data = curve_data.reshape((-1, 2))
 
