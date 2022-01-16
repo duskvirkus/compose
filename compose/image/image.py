@@ -3,6 +3,7 @@ from typing import Union
 
 import torch
 import pydiffvg
+import cv2
 
 from compose.color import Color
 

@@ -14,11 +14,11 @@ class Color:
 
         if self.data.shape[0] == 1:
             self.data = np.array([self.data[0] / max, self.data[0] / max, self.data[0] / max, 1.0])
-        if self.data.shape[0] == 2:
+        elif self.data.shape[0] == 2:
             self.data = np.array([self.data[0] / max, self.data[0] / max, self.data[0] / max, self.data[1] / max])
-        if self.data.shape[0] == 3:
+        elif self.data.shape[0] == 3:
             self.data = np.array([self.data[0] / max, self.data[1] / max, self.data[2] / max, 1.0])
-        if self.data.shape[0] == 4:
+        elif self.data.shape[0] == 4:
             self.data /= max
 
     def as_tensor(self) -> torch.Tensor:

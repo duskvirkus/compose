@@ -2,6 +2,7 @@ from typing import List, Union
 import random
 
 import numpy as np
+import torch
 
 from compose.element import Curve
 from compose.element.create import create_continuous_curve
@@ -39,19 +40,15 @@ def random_curve(
             points[i, j, 1] = previous[1] + radius * (rand() - 0.5)
             previous = points[i, j, :]
 
-    # for i in range(segments):
-    #     p1 = (p0[0] + radius * (rand() - 0.5), p0[1] + radius * (rand() - 0.5))
-    #     p2 = (p1[0] + radius * (rand() - 0.5), p1[1] + radius * (rand() - 0.5))
+    color = torch.tensor([
+        rand(),
+        rand(),
+        rand(),
+        1.0,
+    ], dtype=torch.float32)
 
+    width = torch.tensor(
+        rand(min=1.0, max=8.0)
+    )
 
-    # p0 = start
-    # for j in range(segments):
-    #     p1 = (p0[0] + radius * (rand() - 0.5), p0[1] + radius * (rand() - 0.5))
-    #     p2 = (p1[0] + radius * (rand() - 0.5), p1[1] + radius * (rand() - 0.5))
-    #     p3 = (p2[0] + radius * (rand() - 0.5), p2[1] + radius * (rand() - 0.5))
-    #     points.append([p1, p2])
-    #     if j < segments - 1:
-    #         points.append(p3)
-    #         p0 = p3
-
-    return create_continuous_curve(start, points)
+    return create_continuous_curve(start, points, stroke_color=color, stroke_weight=width)
