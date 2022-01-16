@@ -3,8 +3,9 @@ from typing import Union
 
 import torch
 import pydiffvg
+import cv2
 
-from .color import Color
+from compose.color import Color
 
 class Image:
 

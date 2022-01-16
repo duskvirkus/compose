@@ -44,9 +44,12 @@ class Exporter:
         self,
         to_export: Image,
         name: str = 'export',
+        from_refine = False,
     ) -> None:
         if self.run_directory is None:
             self.create_run_directory()
+
+        # todo implement skip for from refine
 
         image = to_export.data.detach().numpy()
         image *= 255
