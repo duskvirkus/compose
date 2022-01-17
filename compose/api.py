@@ -5,8 +5,6 @@ from compose.io import load
 from compose.composition import Composition
 from compose.render.type import RendererType
 from compose.analyze.lpips import LPIPS
-from compose.analyze.multi import MultiAnalyzer
-from compose.analyze.blob import BlobAnalyzer
 
 # for api functions
 import typing
