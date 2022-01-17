@@ -1,32 +1,29 @@
 # Compose
 
-⚠️ This project is a work in progress and is likely to be buggy and maybe abandon if it doesn't make sense.
+⚠️ This project is still in development. Please report bug but don't expect everything to work very smoothly.
 
-A module with scripts and jupyter/colab notebooks for creating 2d vector graphics using machine learning.
+A python module to streamline working with 2D and 3D vector graphics in machine learning projects.
+
+Much of the philosophy of this module is based on [Processing](https://processing.org/) and [p5.js](https://p5js.org/). In other words it favors more accessible syntax over complete efficiency.
 
 ## Notebooks
 
-Image to SVG Notebook
+Single Image Notebook: [./notebooks/compose_test_01_py.ipynb](./notebooks/compose_test_01_py.ipynb)
 
-`coming soon`
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/duskvirkus/compose/blob/main/notebooks/compose_test_01_py.ipynb)
 
-Image to Plotter SVG
+Video Notebook (very hacky): [./notebooks/compose_test_04_py.ipynb](./notebooks/compose_test_04_py.ipynb)
 
-`coming soon`
-
-Create Animation
-
-`coming soon`
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/duskvirkus/compose/blob/main/notebooks/compose_test_04_py.ipynb)
 
 ## Installing Locally
 
-For a more streamlined process use jupyter lab and vanilla jupyter notebooks.
-
-### Python Config
+### Platform
 
 Recommended python version is 3.7. Ubuntu based Linux is currently the only supported platform. If you run into issues on other platforms feel free to file an issue but it will be low priority.
 
-*If you use Anaconda*
+### Anaconda Setup
+
 ```bash
 conda create -n compose python=3.7
 conda activate compose
@@ -34,6 +31,7 @@ conda install -c conda-forge jupyterlab
 conda install -c anaconda ipykernel
 python -m ipykernel install --user --name=compose
 ```
+
 ### Dependancies
 
 ```bash
@@ -47,6 +45,10 @@ python setup.py install
 cd ..
 python setup.py install
 ```
+
+## Documentation
+
+Currently documentation could use some work and can only be built locally. See CONTRIBUTING.md for some instructions.
 
 ## Thanks
 
