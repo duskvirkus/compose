@@ -51,7 +51,7 @@ class Exporter:
 
         # todo implement skip for from refine
 
-        image = to_export.data.detach().numpy()
+        image = to_export.data.to(device='cpu').numpy()
         image *= 255
         image = image.astype(np.uint8)
         cv2.imwrite(os.path.join(self.run_directory, str(self.export_count).zfill(6) + '-' + name + '.png'), image, [cv2.IMWRITE_PNG_COMPRESSION, 0])
