@@ -74,6 +74,7 @@ def create_continuous_curve(
     curve_data: Union[List[List[List[Union[int, float]]]], np.ndarray, torch.Tensor],
     stroke_color: Union[Color, torch.Tensor] = torch.tensor([0.5, 0.5, 0.5, 1.0], dtype=torch.float32),
     stroke_weight: Union[int, float, torch.Tensor] = torch.tensor(1.0, dtype=torch.float32),
+    no_alpha: bool = False,
 ) -> Curve:
 
     if type(start) != torch.Tensor:
@@ -97,4 +98,5 @@ def create_continuous_curve(
         points = curve_data,
         stroke_color = stroke_color,
         stroke_width = stroke_weight,
+        no_alpha = no_alpha,
     )

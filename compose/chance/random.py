@@ -19,6 +19,7 @@ def random_curve(
     x_range: List[Union[int, float]],
     y_range: List[Union[int, float]],
     radius: float = 100.0,
+    no_alpha: bool = False,
 ) -> Curve:
 
     if type(segments) == list and len(segments) == 2:
@@ -51,4 +52,4 @@ def random_curve(
         rand(min=1.0, max=8.0)
     )
 
-    return create_continuous_curve(start, points, stroke_color=color, stroke_weight=width)
+    return create_continuous_curve(start, points, stroke_color=color, stroke_weight=width, no_alpha=no_alpha)

@@ -35,7 +35,7 @@ class Composition:
         self._optimizers = None
 
         self.learning_rates: Dict = {
-            'points': 1.0,
+            'points': 2.0,
             'stroke_weight': 0.05,
             'stroke_color': 0.2,
         }

@@ -16,6 +16,7 @@ class Curve(Element):
         id = None,
         use_distance_approx: bool = False,
         max_width: float = 8.0,
+        no_alpha: bool = False,
     ):
         if id is None:
             id = Element.get_next_id()
@@ -40,6 +41,8 @@ class Curve(Element):
 
         self.max_width = max_width
 
+        self.no_alpha = no_alpha
+
     def get_points(self) -> List[torch.Tensor]:
         return [self.shape.points]
 
@@ -60,6 +63,8 @@ class Curve(Element):
         self.shape.stroke_width.data.clamp_(1.0, self.max_width)
         # print(self.shape.stroke_width)
         self.shape_group.stroke_color.data.clamp_(0.0, 1.0)
+        if self.no_alpha:
+            self.shape_group.stroke_color.data[3].clamp_(1.0, 1.0)
 
     def __str__(self) -> str:
         prefix = super().__str__()
