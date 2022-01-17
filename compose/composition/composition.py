@@ -31,7 +31,7 @@ class Composition:
         self._elements = []
 
         # intentionally uninitialized
-        self.background: Color = None
+        self.background_color: Color = Color([255, 255, 255])
         self._optimizers = None
 
         self.learning_rates: Dict = {
@@ -57,6 +57,9 @@ class Composition:
             self.learning_rates[key] = learning_rates[key]
         self._optimizers = None
 
+    def background(self, color: Color) -> None:
+        self.background_color = color
+
     def refine(
         self,
         target: Image,
@@ -71,9 +74,9 @@ class Composition:
                 optim.zero_grad()
 
             img = self._renderer.render(self)
-            loss = analyzer(img, target)
+            loss = analyzer(img, target, background=self.background_color)
 
-            self._exporter.save(img.rgb(), from_refine=True)
+            self._exporter.save(img.rgb(background_color=self.background_color), from_refine=True)
 
             print(f'loss: {loss.item()}')
 

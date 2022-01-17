@@ -1,21 +1,24 @@
 from abc import ABC, abstractmethod
 
-from ..image import Image
+from compose.image import Image
+from compose.color import Color
 
 class Analyzer:
 
     def __call__(
         self,
         img: Image,
-        target: Image
+        target: Image,
+        background: Color,
     ):
-        return self.analyze(img, target)
+        return self.analyze(img, target, background)
 
     @abstractmethod
     def analyze(
         self,
         img: Image,
-        target: Image
+        target: Image,
+        background: Color,
     ):
         pass
 

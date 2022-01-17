@@ -45,14 +45,14 @@ class Image:
         img = transparency * img[:, :, :3] + background * (1 - transparency)
         return img
 
-    def for_lpips(self, device, use_cache = False):
+    def for_lpips(self, device, use_cache = False, background_color: Color = Color([255, 255, 255])):
         if self.lpips_cache is not None:
             if self.lpips_cache_device == device:
                 return self.lpips_cache
             else:
                 return self.lpips_cache.to(device)
 
-        img = self.rgb()
+        img = self.rgb(background_color)
         img = img.unsqueeze(0)
         img = img.permute(0, 3, 1, 2)
         img = img.to(device=device)
